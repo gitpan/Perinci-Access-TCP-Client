@@ -1,0 +1,51 @@
+NAME
+    Perinci::Access::TCP::Client - Riap::TCP client
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Perinci::Access::TCP::Client;
+     my $pa = Perinci::Access::TCP::Client->new;
+
+     my $res;
+     $res = $pa->request(call => 'riap+tcp://localhost:5678/Foo/Bar/func',
+                         {args => {a1=>1, a2=>2}});
+     $res = $pa->request(call => 'riap+tcp://localhost:5678/Foo/Bar/func',
+                         {args => {a1=>1, a2=>2}});
+
+DESCRIPTION
+    This class implements Riap::TCP client.
+
+    This class uses Log::Any for logging.
+
+METHODS
+  PKG->new(%attrs) => OBJ
+    Instantiate object. Known attributes:
+
+    *   retries => INT (default 2)
+
+        Number of retries to do on network failure. Setting it to 0 will
+        disable retries.
+
+    *   retry_delay => INT (default 3)
+
+        Number of seconds to wait between retries.
+
+  $pa->request($action => $server_url, \%extra) => $res
+    Send Riap request to $server_url.
+
+SEE ALSO
+    Perinci::Access::TCP::Server
+
+    Riap, Rinci
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
