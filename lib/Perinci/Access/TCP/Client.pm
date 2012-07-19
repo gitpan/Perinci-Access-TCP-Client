@@ -12,7 +12,7 @@ use URI;
 
 use parent qw(Perinci::Access::Base);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods();
 
@@ -111,15 +111,18 @@ sub request {
         $e = $@;
         return [400, "Can't encode request as JSON: $e"] if $e;
 
-        $sock->syswrite("J" . length($req_json) . "\015\012");
-        $sock->syswrite($req_json);
-        $sock->syswrite("\015\012");
+        if (length($req_json) > 1000) {
+            $sock->syswrite("J" . length($req_json) . "\015\012");
+            $sock->syswrite($req_json);
+            $sock->syswrite("\015\012");
+        } else {
+            $sock->syswrite("j$req_json\015\012");
+        }
+        $log->tracef("Sent request to server: %s", $req_json);
 
         # XXX alarm/timeout
-        say "D1";
         my $line = $sock->getline;
         $log->tracef("Got line from server: %s", $line);
-        say "D2";
         if (!$line) {
             delete $self->{_conns}{$key};
             return [500, "Empty response from server"];
@@ -165,7 +168,7 @@ Perinci::Access::TCP::Client - Riap::TCP client
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

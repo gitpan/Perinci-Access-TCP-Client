@@ -18,14 +18,14 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-Access-TCP-Client",
-  "dist_version" => "0.01",
+  "dist_version" => "0.02",
   "license" => "perl",
   "module_name" => "Perinci::Access::TCP::Client",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Perinci::Access::Base" => "0.19",
-    "Riap" => "1.1.14",
+    "Riap" => "1.1.15",
     "Tie::Cache" => 0,
     "URI" => 0,
     "perl" => "5.010001"

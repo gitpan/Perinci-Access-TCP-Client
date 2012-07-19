@@ -16,11 +16,11 @@ meta-spec:
 name: Perinci-Access-TCP-Client
 requires:
   Perinci::Access::Base: 0.19
-  Riap: 1.1.14
+  Riap: 1.1.15
   Tie::Cache: 0
   URI: 0
   perl: 5.010001
 resources:
   homepage: http://metacpan.org/release/Perinci-Access-TCP-Client
   repository: http://github.com/sharyanto/perl-Perinci-Access-TCP-Client
-version: 0.01
+version: 0.02
