@@ -23,4 +23,4 @@ requires:
 resources:
   homepage: http://metacpan.org/release/Perinci-Access-TCP-Client
   repository: http://github.com/sharyanto/perl-Perinci-Access-TCP-Client
-version: 0.02
+version: 0.03
